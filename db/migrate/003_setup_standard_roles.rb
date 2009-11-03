@@ -19,11 +19,6 @@ class SetupStandardRoles < ActiveRecord::Migration
   end
   
   def self.setup_developers
-    developer_users = User.find_all_by_developer(true)
     developer_role = Role.create!(:role_name => 'Developer')
-    developer_users.each do |user|
-      say("Adding #{user.login} to the #{developer_role.role_name} role.")
-      user.roles << developer_users
-    end
   end
 end
